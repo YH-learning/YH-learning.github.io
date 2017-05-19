@@ -342,11 +342,11 @@ SNE方法简介SNE即Stochastic Neighbor Embedding(随机邻居嵌入)。以前�
 <h2 id="SNE方法简介"><a href="#SNE方法简介" class="headerlink" title="SNE方法简介"></a>SNE方法简介</h2><p><strong>SNE</strong>即Stochastic Neighbor Embedding(随机邻居嵌入)。以前高维空间中，使用欧式距离表示两点之间的相似性，SNE则使用了一种新方法：使用条件概率来表示点与点之间的相似性。<br><strong>在高维空间中</strong><br>point <strong>i</strong>与point <strong>j</strong>之间的相似性用一个条件概率来衡量，point <strong>i</strong>把point <strong>j</strong>当作neighbor的概率可以用式子</p>
 <p><img src="http://i.imgur.com/ABPPStx.png" alt=""></p>
 <p>表示。</p>
-<p>上式基于一个假设:Xi点周围的点被选为它的邻居的可能性与高斯分布的概率密度函数成比例。$𝜎_i$表示Xi周围点的构成的高斯分布的方差。高维空间中的概率分布的熵随$𝜎_i$的增大而增大，复杂度<em>Perp</em>则是$𝜎_i$的单调递增函数。<br>公式$$H(P_i) = -\sum<em>jP</em>{j|i}\log<em>2{P</em>{j|i}}$$<br>公式$$Perp(P_i) = 2^{H(P_i)}$$</p>
+<p>上式基于一个假设:Xi点周围的点被选为它的邻居的可能性与高斯分布的概率密度函数成比例。$𝜎_i$表示Xi周围点的构成的高斯分布的方差。高维空间中的概率分布的熵随$𝜎_i$的增大而增大，复杂度<em>Perp</em>则是$𝜎_i$的单调递增函数。<br>公式$$H(P_i) = -\sum_jP_{j|i}\log_2{P_{j|i}}$$<br>公式$$Perp(P_i) = 2^{H(P_i)}$$</p>
 <p>The <em>perplexity</em> can be interpreted as a smooth measure of the effective number of neighbors.</p>
 <p><strong>在低维空间中</strong>，我们可以类似定义两点之间的相似性，但是我们令<br>$$\delta_i = {1\over\sqrt{2}}$$，那么</p>
 <p><img src="http://i.imgur.com/AqZbL7m.png" alt=""></p>
-<p>如果(y_i)与(y_j)很好地描述了高维空间两个点(x_i)与(x<em>j)的相似性，那么我们可以说这两个概率相等，即$$p</em>{j|i} = q_{j|i}$$。我们知道，两个概率分布的相似性可以用KL散度来衡量，即</p>
+<p>如果(y_i)与(y_j)很好地描述了高维空间两个点(x_i)与(x_j)的相似性，那么我们可以说这两个概率相等，即$$p_{j|i} = q_{j|i}$$。我们知道，两个概率分布的相似性可以用KL散度来衡量，即</p>
 <p><img src="http://i.imgur.com/V9Uxsv2.png" alt=""></p>
 <p>将KL散度的定义作为Cost function，准备利用梯度下降算法最小化Cost function</p>
 <p><img src="http://i.imgur.com/tqBYZxv.png" alt=""></p>
