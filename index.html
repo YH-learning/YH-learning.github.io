@@ -317,48 +317,18 @@
       
         
           
-            <ol>
-<li>首先，在LINE的github主页上下载源码（可以直接下载zip文件），并将内附linux文件夹下的东西解压到某个文件夹下，将该文件夹重命名为line。<br><strong>line</strong><ul>
-<li>—-concatenate.cpp</li>
-<li>—-line</li>
-<li>—-line.cpp</li>
-<li>—-normalize.cpp</li>
-<li>—-reconstruct.cpp</li>
-<li>—-train_youtube.sh</li>
-</ul>
-</li>
-<li>配置Linux环境下的编译环境<ol>
-<li>Ubuntu默认安装了gcc。</li>
-<li>下载gsl包文件，版本这里选择gsl-2.2.tar.gz，并解压。地址：ftp://ftp.gnu.org/gnu/gsl/</li>
-<li>在解压后的gsl-2.2目录下执行以下操作<ul>
-<li>./configure</li>
-<li>make</li>
-<li>make install</li>
-</ul>
-</li>
-<li>Terminal下进入line目录,执行<ul>
-<li>g++ line.cpp -lpthread -lgsl -lgslcblas</li>
-</ul>
-</li>
-<li>将输出的a.out重命名为line。</li>
-<li>Terminal下执行./line，可能会报错<br><img src="http://i.imgur.com/Pf0FSFZ.png" alt=""></li>
-<li>如果报错则在Terminal执行以下操作：<ul>
-<li>LD_LIBRARY_PATH=/usr/local/lib</li>
-<li>export LD_LIBRARY_PATH</li>
-</ul>
-</li>
-<li>再次执行./line，如果提示参数信息则证明成功。</li>
-</ol>
-</li>
-<li>验证所给的net_youtube.txt 示例文件<ol>
-<li>下载youtube-links.txt.gz并解压。<br>地址：<a href="http://socialnetworks.mpi-sws.mpg.de/data/youtube-links.txt.gz" target="_blank" rel="external">http://socialnetworks.mpi-sws.mpg.de/data/youtube-links.txt.gz</a></li>
-<li>重命名其中的release-youtube-links.txt为net_youtube.txt，复制一份至line目录</li>
-<li>在line目录下执行：./train_youtube.sh</li>
-</ol>
-</li>
-</ol>
-
           
+首先，在LINE的github主页上下载源码（可以直接下载zip文件），并将内附linux文件夹下的东西解压到某个文件夹下，将该文件夹重命名为line。line
+—-concatenate.cpp
+
+          ...
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/05/19/如何创建LINE项目/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -473,28 +443,20 @@
       
         
           
-            <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><blockquote>
-<p>数据降维<br>高维空间表示–&gt;低维空间表示。</p>
-</blockquote>
-<p><img src="http://i.imgur.com/5QdOlLl.png" alt="降维分类图"></p>
-<p>其中,t-SNE方法可归入保留局部特征的邻接图一类。</p>
-<h2 id="SNE方法简介"><a href="#SNE方法简介" class="headerlink" title="SNE方法简介"></a>SNE方法简介</h2><p><strong>SNE</strong>即Stochastic Neighbor Embedding(随机邻居嵌入)。以前高维空间中，使用欧式距离表示两点之间的相似性，SNE则使用了一种新方法：使用条件概率来表示点与点之间的相似性。<br><strong>在高维空间中</strong><br>point <strong>i</strong>与point <strong>j</strong>之间的相似性用一个条件概率来衡量，point <strong>i</strong>把point <strong>j</strong>当作neighbor的概率可以用式子</p>
-<p><img src="http://i.imgur.com/ABPPStx.png" alt=""></p>
-<p>表示。</p>
-<p>上式基于一个假设:Xi点周围的点被选为它的邻居的可能性与高斯分布的概率密度函数成比例。$𝜎_i$表示Xi周围点的构成的高斯分布的方差。高维空间中的概率分布的熵随$𝜎_i$的增大而增大，复杂度<em>Perp</em>则是$𝜎_i$的单调递增函数。<br>公式$$H(P_i) = -\sum_jP_{j|i}\log_2{P_{j|i}}$$<br>公式$$Perp(P_i) = 2^{H(P_i)}$$</p>
-<p>The <em>perplexity</em> can be interpreted as a smooth measure of the effective number of neighbors.</p>
-<p><strong>在低维空间中</strong>，我们可以类似定义两点之间的相似性，但是我们令<br>$$\delta_i = {1\over\sqrt{2}}$$，那么</p>
-<p><img src="http://i.imgur.com/AqZbL7m.png" alt=""></p>
-<p>如果(y_i)与(y_j)很好地描述了高维空间两个点(x_i)与(x_j)的相似性，那么我们可以说这两个概率相等，即$$p_{j|i} = q_{j|i}$$。我们知道，两个概率分布的相似性可以用KL散度来衡量，即</p>
-<p><img src="http://i.imgur.com/V9Uxsv2.png" alt=""></p>
-<p>将KL散度的定义作为Cost function，准备利用梯度下降算法最小化Cost function</p>
-<p><img src="http://i.imgur.com/tqBYZxv.png" alt=""></p>
-<p>Cost function的梯度可以被推导出来，这里给出结果</p>
-<p><img src="http://i.imgur.com/XU7Csp3.png" alt=""></p>
-<p>继而写出梯度下降公式<br><img src="http://i.imgur.com/2lpFoas.png" alt=""></p>
-<p>上式中的(\eta)表示学习率，(\alpha_(t))表示t时刻的动量项，该项用以梯度下降过程中跳出局部最优解。</p>
+          Introduction
+数据降维高维空间表示–&gt;低维空间表示。
 
-          
+
+其中,t-SNE方法可归入保留局部特征的邻接图一类。
+SNE方法简介SNE即Stochastic Neighbor Embe
+          ...
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/16/SNE方法简介/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -609,10 +571,17 @@
       
         
           
-            <p>这是我的第一篇博客，希望我可以继续更新下去。<br>姚恒， fighting!</p>
-<p><strong>加油</strong></p>
+          这是我的第一篇博客，希望我可以继续更新下去。姚恒， fighting!
+加油
 
           
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/12/Hello/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
