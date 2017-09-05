@@ -109,7 +109,7 @@
 <meta property="og:image" content="http://i.imgur.com/tqBYZxv.png">
 <meta property="og:image" content="http://i.imgur.com/XU7Csp3.png">
 <meta property="og:image" content="http://i.imgur.com/2lpFoas.png">
-<meta property="og:updated_time" content="2017-09-03T03:38:02.020Z">
+<meta property="og:updated_time" content="2017-09-03T06:46:23.044Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SNE方法简介">
 <meta name="twitter:description" content="Introduction 数据降维高维空间表示–&amp;gt;低维空间表示。   其中,t-SNE方法可归入保留局部特征的邻接图一类。 SNE方法简介SNE即Stochastic Neighbor Embedding(随机邻居嵌入)。以前高维空间中，使用欧式距离表示两点之间的相似性，SNE则使用了一种新方法：使用条件概率来表示点与点之间的相似性。在高维空间中point i与point j之间的相似性用一">
@@ -227,6 +227,26 @@
         </li>
       
         
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -335,7 +355,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  
+                  467 字
                 </span>
               
 
@@ -351,7 +371,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  
+                  2 min
                 </span>
               
             </div>
@@ -384,14 +404,14 @@
 <p>The <em>perplexity</em> can be interpreted as a smooth measure of the effective number of neighbors.</p>
 <p><strong>在低维空间中</strong>，我们可以类似定义两点之间的相似性，但是我们令<br>$$\delta_i = {1\over\sqrt{2}}$$，那么</p>
 <p><img src="http://i.imgur.com/AqZbL7m.png" alt=""></p>
-<p>如果(y_i)与(y_j)很好地描述了高维空间两个点(x_i)与(x_j)的相似性，那么我们可以说这两个概率相等，即$$p_{j|i} = q_{j|i}$$。我们知道，两个概率分布的相似性可以用KL散度来衡量，即</p>
+<p>如果$y_i$与$y_j$很好地描述了高维空间两个点$x_i$与$x_j$的相似性，那么我们可以说这两个概率相等，即$$p_{j|i} = q_{j|i}$$。我们知道，两个概率分布的相似性可以用KL散度来衡量，即</p>
 <p><img src="http://i.imgur.com/V9Uxsv2.png" alt=""></p>
 <p>将KL散度的定义作为Cost function，准备利用梯度下降算法最小化Cost function</p>
 <p><img src="http://i.imgur.com/tqBYZxv.png" alt=""></p>
 <p>Cost function的梯度可以被推导出来，这里给出结果</p>
 <p><img src="http://i.imgur.com/XU7Csp3.png" alt=""></p>
 <p>继而写出梯度下降公式<br><img src="http://i.imgur.com/2lpFoas.png" alt=""></p>
-<p>上式中的(\eta)表示学习率，(\alpha_(t))表示t时刻的动量项，该项用以梯度下降过程中跳出局部最优解。</p>
+<p>上式中的$\eta$表示学习率，$\alpha_{(t)}$表示t时刻的动量项，该项用以梯度下降过程中跳出局部最优解。</p>
 
       
     </div>
@@ -400,21 +420,27 @@
     
 
     
+
     
-      <div>
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
         <div>
+          <div>
     
         <div style="text-align:center;color: #228B22;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢阅读-------------</div>
     
 </div>
-      </div>
-    
-    
-
-    
-    
-      <div>
-        
+        </div>
+      
+      
+        <div>
+          
 <div class="my_post_copyright">
   <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
   
@@ -425,7 +451,7 @@
   <p><span>本文标题:</span><a href="/2017/01/16/SNE方法简介/">SNE方法简介</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 姚恒 的个人博客">姚恒</a></p>
   <p><span>发布时间:</span>2017年01月16日 - 19:01</p>
-  <p><span>最后更新:</span>2017年09月03日 - 11:09</p>
+  <p><span>最后更新:</span>2017年09月03日 - 14:09</p>
   <p><span>原始链接:</span><a href="/2017/01/16/SNE方法简介/" title="SNE方法简介">https://yh-learning.github.io/2017/01/16/SNE方法简介/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://yh-learning.github.io/2017/01/16/SNE方法简介/"  aria-label="复制成功！"></i></span>
   </p>
@@ -446,18 +472,8 @@
     }));  
 </script>
 
-      </div>
-    
-    
-
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
+        </div>
+      
       
 
       
@@ -559,14 +575,32 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
 
           
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
 
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
           
 
         </nav>
@@ -660,7 +694,7 @@
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
     <span title="Site words total count">
-      
+      985
     </span>
   
 </div>
@@ -855,6 +889,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 
